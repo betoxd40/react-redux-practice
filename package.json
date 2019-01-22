@@ -28,7 +28,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "prop-types": "^15.6.2"
   }
 }

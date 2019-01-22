@@ -9,7 +9,7 @@ import {
 import { checkIfImageExist } from '../../utils';
 import { types as vehicleTypes } from '../reducers/vehicle';
 
-function* fetchLicensePlateSaga(action) {
+function* fetchLicensePlateAndPostSaga(action) {
     try {
         const responseFetchLicense = yield call( fetchLicensePlate, action.payload.licensePlate );
         console.log('licenseeee', responseFetchLicense);
@@ -26,12 +26,13 @@ function* fetchLicensePlateSaga(action) {
             imageUrl: imageUrl,
             }
         const response = yield call( postVehicle, action.payload.token, {vehicle: vehicleData} );
+        const code = response.code;
         console.log('el response del post es', response);
-        yield put({type: vehicleTypes.VEHICLE_FETCH_SUCCEEDED, payload: vehicleData});
+        yield put({type: vehicleTypes.VEHICLE_FETCH_AND_POST_SUCCEEDED, payload: vehicleData});
 
     } catch (e) {
         console.log('el error', e);
-        yield put({type: vehicleTypes.VEHICLE_FETCH_FAILED, message: e.message});
+        yield put({type: vehicleTypes.VEHICLE_FETCH_AND_POST_FAILED, message: e});
     }
 }
 
@@ -57,4 +58,4 @@ function* deleteVehicleByNumberSaga(action) {
     }
 }
 
-export { fetchLicensePlateSaga, getAllVehiclesSaga, deleteVehicleByNumberSaga };
+export { fetchLicensePlateAndPostSaga, getAllVehiclesSaga, deleteVehicleByNumberSaga };

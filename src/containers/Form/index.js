@@ -21,9 +21,7 @@ class Form extends Component {
     }
 
     handleClickDelete = () => {
-        const response = this.props.vehicleDelete(this.props.authToken, 157);
-        const response1 = this.props.vehicleDelete(this.props.authToken, 158);
-        console.log(response, response1);
+        const response = this.props.vehicleDelete(this.props.authToken, 161);
     }
 
     componentDidMount() {
@@ -43,13 +41,15 @@ class Form extends Component {
                     </Row>
                     <Row center="xs" className='extra-padding'>
                         <Input
-                            name='licensePlates'
+                            error={this.props.error}
+                            errorText='Hay un error'
+                            name='licensePlate'
                             placeholder='Enter your license...'
-                            onChange={event => this.props.actions.handleChange( { name: 'licensePlates', value: event.target.value, } )}
-                            value={this.props.licensePlates} />
+                            onChange={event => this.props.actions.handleChange( { name: 'licensePlate', value: event.target.value, } )}
+                            value={this.props.licensePlate} />
                         <Button
                             className='extra-padding-left'
-                            onClick={() => this.handleClick(this.props.licensePlates)}>
+                            onClick={() => this.handleClick(this.props.licensePlate)}>
                             Click!
                         </Button>
                     </Row>
@@ -71,7 +71,8 @@ class Form extends Component {
 
 function mapStateToProps(state) {
     return {
-        licensePlates: state.vehicle.licensePlates,
+        licensePlate: state.vehicle.licensePlate,
+        error: state.vehicle.error,
         vehicleInfo: state.vehicle.vehicleInfo,
         authenticated: state.authentication.authenticated,
         authToken: state.authentication.authToken,
@@ -83,7 +84,7 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators({
             handleChange,
         }, dispatch),
-        vehicleFetch: (token, licensePlate) => dispatch({ type: vehicleTypes.VEHICLE_FETCH_REQUESTED, payload: {token, licensePlate} }),
+        vehicleFetch: (token, licensePlate) => dispatch({ type: vehicleTypes.VEHICLE_FETCH_AND_POST_REQUESTED, payload: {token, licensePlate} }),
         vehicleDelete: (token, id) => dispatch({ type: vehicleTypes.VEHICLE_DELETE_REQUESTED, payload: {token, id} }),
         vehiclesGet: token => dispatch({ type: vehicleTypes.VEHICLES_GET_REQUESTED, payload: token }),
         authenticationPost: () => dispatch({ type: authTypes.AUTHENTICATION_POST_REQUESTED })

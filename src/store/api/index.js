@@ -13,16 +13,6 @@ var dataForAuthentication = {
     password: 'test',
 }
 
-  var data2 = {
-      vehicle: {
-        'merk': "Test",
-        'handelsbenaming': "Test",
-        'eerste_kleur': "Test",
-        'license_plate': "Test"
-      }
-  }
-
-
 const postAuthentication = () =>  axios.post(`${apiBackendUrl}/auth/login`, dataForAuthentication);
 
 const fetchLicensePlate = licensePlate => axios.get(`${apiRWDUrl}?kenteken=${licensePlate}`);

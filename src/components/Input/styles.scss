@@ -1,4 +1,5 @@
 input {
+    line-height: 30px;
     border-bottom: 2px solid #f2f2f2; 
     border-left: none; 
     border-right: none; 
@@ -9,6 +10,20 @@ input {
     &:focus {
         outline: none;
     }
+    &.error {
+        transition: 0.3s;
+        border-bottom: 2px solid red; 
+        color: red; 
+    }
+}
+
+.error-text{
+    display: flex;
+    justify-content: start;
+    margin: 0;
+    padding-top: 5px;
+    color: red; 
+    font-size: 0.7rem;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
