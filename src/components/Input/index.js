@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
-import styles from './styles.scss';
 
 class Input extends Component {
   static propTypes = {
@@ -22,13 +21,15 @@ class Input extends Component {
       onChange,
       placeholder,
       error,
-      errorText
+      errorText,
+      success,
+      successText
     } = this.props;
 
     return (
       <div>
         <input
-          className={error && 'error'}
+          className={error ? 'error' : null}
           type="text"
           placeholder={placeholder || null}
           value={value || ""}
@@ -36,6 +37,7 @@ class Input extends Component {
           onChange={onChange}
         />
         {error && errorText && <p className='error-text'>{errorText}</p>}
+        {success && successText && <p className='success-text'>{successText}</p>}
       </div>
     );
   }

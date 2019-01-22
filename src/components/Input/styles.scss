@@ -26,6 +26,15 @@ input {
     font-size: 0.7rem;
 }
 
+.success-text{
+    display: flex;
+    justify-content: start;
+    margin: 0;
+    padding-top: 5px;
+    color: #f2f2f2; 
+    font-size: 0.7rem;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #f2f2f2;
   }

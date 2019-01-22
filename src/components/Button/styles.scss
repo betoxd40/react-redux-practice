@@ -10,4 +10,8 @@ button {
         color: #02AAB0;
         cursor: pointer;
     }
+    &:disabled {
+        opacity: 0.5; 
+        cursor: not-allowed;
+    }
 }

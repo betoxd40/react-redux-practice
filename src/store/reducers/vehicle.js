@@ -24,6 +24,7 @@ const initialState = {
     licensePlate : '',
     loading: false,
     error: false,
+    success: false,
 };
 
 export default function reducer( state = initialState, action = {} ) {
@@ -35,10 +36,22 @@ export default function reducer( state = initialState, action = {} ) {
             return {...state, loading: true}
         }
         case types.VEHICLE_FETCH_AND_POST_SUCCEEDED: {
-            return {...state, loading: false, vehicleInfo: action.payload, licensePlate: '', vehicleInfo: {}}
+            return {
+                ...state, 
+                loading: false, 
+                vehicleInfo: action.payload, 
+                licensePlate: '',
+                error: false, 
+                success:true, }
         }
         case types.VEHICLE_FETCH_AND_POST_FAILED: {
-            return {...state, loading: false, error: true, licensePlate: '', vehicleInfo: {}}
+            return {
+                ...state, 
+                loading: false, 
+                error: true, 
+                licensePlate: '', 
+                vehicleInfo: {},
+                success: false, }
         }
         case types.VEHICLES_GET_REQUESTED: {
             return {...state, loading: true}

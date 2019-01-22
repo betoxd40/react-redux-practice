@@ -3,7 +3,6 @@ import { postAuthentication } from '../api';
 import { types as authTypes } from '../reducers/authentication'; 
 
 function* postAuthenticationSaga() {
-    console.log('postAuth')
     try {
         const responseAuthentication = yield call(postAuthentication);
         const authToken = responseAuthentication.data.auth_token;

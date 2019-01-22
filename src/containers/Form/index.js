@@ -17,11 +17,10 @@ class Form extends Component {
 
     handleClickForVehicles = () => {
         const response = this.props.vehiclesGet(this.props.authToken);
-        console.log(response);
     }
 
     handleClickDelete = () => {
-        const response = this.props.vehicleDelete(this.props.authToken, 161);
+        // this.props.vehicleDelete(this.props.authToken, 164);
     }
 
     componentDidMount() {
@@ -42,18 +41,21 @@ class Form extends Component {
                     <Row center="xs" className='extra-padding'>
                         <Input
                             error={this.props.error}
-                            errorText='Hay un error'
+                            errorText='Ooops an error has ocurred with the call D:'
+                            success={this.props.success}
+                            successText='The license have been sent to the backend :)'
                             name='licensePlate'
                             placeholder='Enter your license...'
                             onChange={event => this.props.actions.handleChange( { name: 'licensePlate', value: event.target.value, } )}
                             value={this.props.licensePlate} />
                         <Button
+                            disabled={this.props.loading}
                             className='extra-padding-left'
                             onClick={() => this.handleClick(this.props.licensePlate)}>
                             Click!
                         </Button>
-                    </Row>
-                    <Row center="xs">
+                    </Row>        
+                    {/* <Row center="xs">
                         <Button
                             onClick={() => this.handleClickForVehicles()}>
                             Get Vehicles Data
@@ -62,7 +64,7 @@ class Form extends Component {
                             onClick={() => this.handleClickDelete()}>
                             Delete vehicle 
                         </Button>
-                    </Row>
+                    </Row> */}
                 </Grid>
             </div>
         );
@@ -71,8 +73,10 @@ class Form extends Component {
 
 function mapStateToProps(state) {
     return {
+        loading: state.vehicle.loading,
         licensePlate: state.vehicle.licensePlate,
         error: state.vehicle.error,
+        success: state.vehicle.success,
         vehicleInfo: state.vehicle.vehicleInfo,
         authenticated: state.authentication.authenticated,
         authToken: state.authentication.authToken,

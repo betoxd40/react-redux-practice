@@ -12,7 +12,6 @@ import { types as vehicleTypes } from '../reducers/vehicle';
 function* fetchLicensePlateAndPostSaga(action) {
     try {
         const responseFetchLicense = yield call( fetchLicensePlate, action.payload.licensePlate );
-        console.log('licenseeee', responseFetchLicense);
         const responseFetchImage = yield call( fetchVehicleImage,  responseFetchLicense.data[0].merk );
         const imageUrl = checkIfImageExist(responseFetchImage.data.items);
         const vehicleData = {
@@ -27,11 +26,9 @@ function* fetchLicensePlateAndPostSaga(action) {
             }
         const response = yield call( postVehicle, action.payload.token, {vehicle: vehicleData} );
         const code = response.code;
-        console.log('el response del post es', response);
         yield put({type: vehicleTypes.VEHICLE_FETCH_AND_POST_SUCCEEDED, payload: vehicleData});
 
     } catch (e) {
-        console.log('el error', e);
         yield put({type: vehicleTypes.VEHICLE_FETCH_AND_POST_FAILED, message: e});
     }
 }
@@ -39,10 +36,8 @@ function* fetchLicensePlateAndPostSaga(action) {
 function* getAllVehiclesSaga(action) {
     try {
         const response = yield call( getAllVehicles, action.payload );
-        console.log('los vehiculos son', response);
         yield put({type: vehicleTypes.VEHICLES_GET_SUCCEEDED, payload: response});
     } catch (e) {
-        console.log('el error', e);
         yield put({type: vehicleTypes.VEHICLES_GET_FAILED, message: e.message});
     }
 }
@@ -50,10 +45,8 @@ function* getAllVehiclesSaga(action) {
 function* deleteVehicleByNumberSaga(action) {
     try {
         const response = yield call( deleteVehicleById, action.payload.token, action.payload.id );
-        console.log('vehiculo eliminado', response);
         yield put({type: vehicleTypes.VEHICLE_DELETE_SUCCEEDED, payload: response});
     } catch (e) {
-        console.log('el error', e);
         yield put({type: vehicleTypes.VEHICLE_DELETE_FAILED, message: e.message});
     }
 }
