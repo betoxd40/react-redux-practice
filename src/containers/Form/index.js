@@ -20,7 +20,9 @@ class Form extends Component {
     }
 
     handleClickDelete = () => {
-        // this.props.vehicleDelete(this.props.authToken, 164);
+        this.props.vehicleDelete(this.props.authToken, 165);
+        this.props.vehicleDelete(this.props.authToken, 166);
+        this.props.vehicleDelete(this.props.authToken, 167);
     }
 
     componentDidMount() {
@@ -55,7 +57,7 @@ class Form extends Component {
                             Click!
                         </Button>
                     </Row>        
-                    {/* <Row center="xs">
+                    <Row center="xs">
                         <Button
                             onClick={() => this.handleClickForVehicles()}>
                             Get Vehicles Data
@@ -64,7 +66,7 @@ class Form extends Component {
                             onClick={() => this.handleClickDelete()}>
                             Delete vehicle 
                         </Button>
-                    </Row> */}
+                    </Row>
                 </Grid>
             </div>
         );

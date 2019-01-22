@@ -36,6 +36,7 @@ function* fetchLicensePlateAndPostSaga(action) {
 function* getAllVehiclesSaga(action) {
     try {
         const response = yield call( getAllVehicles, action.payload );
+        console.log(response)
         yield put({type: vehicleTypes.VEHICLES_GET_SUCCEEDED, payload: response});
     } catch (e) {
         yield put({type: vehicleTypes.VEHICLES_GET_FAILED, message: e.message});

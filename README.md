@@ -1,5 +1,9 @@
 This project was bootstrapped with Create React App :stuck_out_tongue:.
 
+## Description
+
+All the api calls are in `./store/api`, they're all handled, but for this test i just use fetch license and image and then post to the backend.
+
 ## ENV Variables
 
 This project have integrated env variables, also, if you dont wanna handle env variables, i've default values for this, so don't worry :muscle: .
