@@ -1,0 +1,16 @@
+input {
+    border-bottom: 2px solid #f2f2f2; 
+    border-left: none; 
+    border-right: none; 
+    border-top: none; 
+    background: none;
+    width: 300px;
+    color: #f2f2f2;
+    &:focus {
+        outline: none;
+    }
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #f2f2f2;
+  }

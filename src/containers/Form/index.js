@@ -7,7 +7,7 @@ import { handleChange } from '../../store/reducers/vehicle';
 import { types as authTypes } from '../../store/reducers/authentication';
 import { types as vehicleTypes } from '../../store/reducers/vehicle';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import './styles.css';
+import './styles.scss';
 
 class Form extends Component {
     
@@ -48,8 +48,9 @@ class Form extends Component {
                             onChange={event => this.props.actions.handleChange( { name: 'licensePlates', value: event.target.value, } )}
                             value={this.props.licensePlates} />
                         <Button
+                            className='extra-padding-left'
                             onClick={() => this.handleClick(this.props.licensePlates)}>
-                            Click me
+                            Click!
                         </Button>
                     </Row>
                     <Row center="xs">
